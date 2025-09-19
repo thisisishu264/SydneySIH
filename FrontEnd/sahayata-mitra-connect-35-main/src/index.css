@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sahayata Setu Design System - Indian Government Platform */
+
+@layer base {
+  :root {
+    /* Background & Base */
+    --background: 0 0% 98%;
+    --foreground: 220 13% 18%;
+
+    /* Card System */
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Indian Flag Inspired Colors */
+    --saffron: 25 100% 60%;        /* Indian Saffron */
+    --government-green: 120 100% 25%;  /* Indian Green */
+    --trust-blue: 214 84% 30%;     /* Government Blue */
+    --ashoka-navy: 220 58% 18%;    /* Deep Navy */
+
+    /* Primary System - Trust Blue */
+    --primary: 214 84% 30%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 84% 25%;
+
+    /* Secondary System - Saffron */
+    --secondary: 25 100% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 25 100% 55%;
+
+    /* Success System - Government Green */
+    --success: 120 100% 25%;
+    --success-foreground: 0 0% 100%;
+    --success-hover: 120 100% 20%;
+
+    /* Muted & Accent */
+    --muted: 220 13% 95%;
+    --muted-foreground: 220 13% 45%;
+    --accent: 220 13% 95%;
+    --accent-foreground: 220 13% 18%;
+
+    /* Status Colors */
+    --warning: 45 100% 51%;
+    --warning-foreground: 220 13% 18%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 214 84% 30%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(25 100% 60%), hsl(120 100% 25%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 13% 98%));
+    --gradient-button: linear-gradient(135deg, hsl(214 84% 30%), hsl(214 84% 35%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(220 13% 18% / 0.1), 0 2px 4px -1px hsl(220 13% 18% / 0.06);
+    --shadow-button: 0 2px 4px hsl(214 84% 30% / 0.2);
+    --shadow-elevated: 0 10px 15px -3px hsl(220 13% 18% / 0.1), 0 4px 6px -2px hsl(220 13% 18% / 0.05);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+  }
+
+  .dark {
+    --background: 220 13% 9%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 214 84% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 214 84% 40%;
+
+    --secondary: 25 100% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-hover: 25 100% 50%;
+
+    --success: 120 100% 30%;
+    --success-foreground: 0 0% 100%;
+    --success-hover: 120 100% 25%;
+
+    --muted: 220 13% 15%;
+    --muted-foreground: 220 13% 60%;
+    --accent: 220 13% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --warning: 45 100% 60%;
+    --warning-foreground: 220 13% 9%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 214 84% 45%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(25 100% 55%), hsl(120 100% 30%));
+    --gradient-card: linear-gradient(145deg, hsl(220 13% 12%), hsl(220 13% 15%));
+    --gradient-button: linear-gradient(135deg, hsl(214 84% 45%), hsl(214 84% 50%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* AI Assistant Pulse Animation */
+  .pulse-gentle {
+    animation: pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-gentle {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-hero);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Progress Bar Animation */
+  .progress-fill {
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Highlight Effect for AI Assistant */
+  .highlight-glow {
+    position: relative;
+    animation: highlight-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes highlight-glow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--secondary) / 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px hsl(var(--secondary) / 0);
+    }
+  }
+}
