@@ -6,6 +6,9 @@ import { Badge } from '@/components/ui/badge';
 import { Home, User, LogOut, CheckCircle, Loader2, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
+// This line reads the URL from your .env.local file
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 // Define a type for your scheme data for type safety
 interface Scheme {
   scheme_id: number;
@@ -35,10 +38,10 @@ const HomePage = () => {
     
     setUserName(storedUserName);
     
-    // --- New Logic: Fetch Eligible Schemes ---
     const fetchSchemes = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/eligibleSchemes?user_id=${storedUserId}`);
+        // --- CHANGE #1 ---
+        const response = await fetch(`${API_BASE_URL}/eligibleSchemes?user_id=${storedUserId}`);
         if (!response.ok) {
           const errorData = await response.json();
           throw new Error(errorData.error || 'Failed to fetch schemes.');
@@ -61,12 +64,12 @@ const HomePage = () => {
     navigate('/');
   };
   
-  // --- New Function: Handle Application Submission ---
   const handleApply = async (schemeId: number, schemeName: string) => {
     const userId = localStorage.getItem('user_id');
     
     try {
-      const response = await fetch('http://localhost:5000/submitApplication', {
+      // --- CHANGE #2 ---
+      const response = await fetch(`${API_BASE_URL}/submitApplication`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_id: parseInt(userId!), scheme_id: schemeId }),
@@ -89,7 +92,6 @@ const HomePage = () => {
     }
   };
   
-  // --- New Function to render the list of schemes ---
   const renderSchemes = () => {
     if (isLoadingSchemes) {
       return (
@@ -141,7 +143,6 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="border-b bg-white shadow-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -162,10 +163,8 @@ const HomePage = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="space-y-8">
-          {/* Welcome Section */}
           <Card className="shadow-card bg-white">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -178,7 +177,6 @@ const HomePage = () => {
             </CardHeader>
           </Card>
 
-          {/* Personalized Schemes Section */}
           <Card className="shadow-card bg-white">
             <CardHeader>
               <CardTitle>Your Recommended Schemes</CardTitle>

@@ -9,6 +9,9 @@ import { Badge } from '@/components/ui/badge';
 import { User, IndianRupee, Users, Briefcase, Heart } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
+// This line reads the URL from your .env.local file
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const IntermediatePage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -62,7 +65,8 @@ const IntermediatePage = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/complete-profile', {
+      // --- CHANGE ---
+      const response = await fetch(`${API_BASE_URL}/complete-profile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -191,7 +195,7 @@ const IntermediatePage = () => {
               />
             </div>
 
-            <Button 
+            <Button
               onClick={handleCompleteRegistration}
               disabled={!formData.annual_income || !formData.caste_category || isLoading}
               className="w-full"

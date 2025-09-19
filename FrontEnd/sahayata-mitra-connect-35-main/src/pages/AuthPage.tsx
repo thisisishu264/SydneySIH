@@ -5,8 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Badge } from '@/components/ui/badge';
-import { CreditCard, Phone, Shield } from 'lucide-react';
+import { CreditCard, Shield } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+
+// This line reads the URL from your .env.local file
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -30,7 +33,8 @@ const AuthPage = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/initiate-auth', {
+      // --- CHANGE #1 ---
+      const response = await fetch(`${API_BASE_URL}/initiate-auth`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +64,7 @@ const AuthPage = () => {
     } catch (error) {
       toast({
         title: "Network Error",
-        description: "Please check your connection and try again",
+        description: "Could not connect to the server. Is it running?",
         variant: "destructive"
       });
     } finally {
@@ -80,7 +84,8 @@ const AuthPage = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/verify-otp', {
+      // --- CHANGE #2 ---
+      const response = await fetch(`${API_BASE_URL}/verify-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -95,12 +100,10 @@ const AuthPage = () => {
 
       if (response.ok) {
         if (data.status === 'LOGIN_SUCCESS') {
-          // Existing user - go directly to HomePage
           localStorage.setItem('user_name', data.name);
           localStorage.setItem('user_id', data.user_id.toString());
           navigate('/home');
         } else if (data.status === 'REGISTRATION_OTP_VERIFIED') {
-          // New user - go to IntermediatePage with user_id
           localStorage.setItem('user_id', data.user_id.toString());
           navigate('/complete-profile');
         }
@@ -118,7 +121,7 @@ const AuthPage = () => {
     } catch (error) {
       toast({
         title: "Network Error",
-        description: "Please check your connection and try again",
+        description: "Could not connect to the server. Is it running?",
         variant: "destructive"
       });
     } finally {
@@ -126,17 +129,15 @@ const AuthPage = () => {
     }
   };
 
+  // The rest of your component's return statement (JSX) remains the same
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-6">
-        {/* Header */}
         <div className="text-center space-y-2">
           <h1 className="text-3xl font-bold gradient-text">Sahayata Setu</h1>
           <Badge variant="secondary">Assistance Bridge</Badge>
           <p className="text-muted-foreground">Secure Authentication Portal</p>
         </div>
-
-        {/* Stage 1: Send OTP */}
         {stage === 'send-otp' && (
           <Card className="shadow-card">
             <CardHeader>
@@ -169,7 +170,7 @@ const AuthPage = () => {
                   maxLength={10}
                 />
               </div>
-              <Button 
+              <Button
                 onClick={handleSendOTP}
                 disabled={aadhaarNumber.length !== 12 || phoneNumber.length !== 10 || isLoading}
                 className="w-full"
@@ -179,8 +180,6 @@ const AuthPage = () => {
             </CardContent>
           </Card>
         )}
-
-        {/* Stage 2: Verify OTP */}
         {stage === 'verify-otp' && (
           <Card className="shadow-card">
             <CardHeader>
@@ -204,15 +203,15 @@ const AuthPage = () => {
                   className="text-center text-lg tracking-widest"
                 />
               </div>
-              <Button 
+              <Button
                 onClick={handleVerifyOTP}
                 disabled={otp.length !== 6 || isLoading}
                 className="w-full"
               >
                 {isLoading ? 'Verifying...' : 'Verify & Continue'}
               </Button>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => setStage('send-otp')}
                 disabled={isLoading}
                 className="w-full"
@@ -222,8 +221,6 @@ const AuthPage = () => {
             </CardContent>
           </Card>
         )}
-
-        {/* Footer */}
         <div className="text-center text-sm text-muted-foreground">
           <p>Your data is secured with end-to-end encryption</p>
         </div>
