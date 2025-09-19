@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -433,3 +434,222 @@
 </body>
 </html>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Recommended Schemes - Sahayata Setu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-blue-600">
+                Sahayata Setu
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-700 font-medium hidden sm:block">Gaurika Varughese</span>
+                <a href="#" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center gap-2">
+                    Logout
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="p-4 sm:p-6 lg:p-8">
+        <div class="max-w-4xl mx-auto">
+            
+            <!-- Welcome Message -->
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-start gap-4">
+                <div class="flex-shrink-0 bg-blue-50 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" />
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">Welcome, Gaurika Varughese!</h1>
+                    <p class="mt-1 text-gray-600">Based on your profile, we've found the following government schemes you may be eligible for.</p>
+                </div>
+            </div>
+
+            <!-- Schemes Section -->
+            <div class="mt-8">
+                <h2 class="text-2xl font-bold text-gray-900">Your Recommended Schemes</h2>
+                <p class="mt-1 text-gray-600">Click "Apply Now" to start a simple, guided application process.</p>
+                
+                <!-- Filter Bar -->
+                <div class="my-6 bg-white p-4 rounded-2xl border border-gray-200 shadow-sm flex flex-wrap items-center gap-4">
+                    <div class="flex items-center gap-2 text-gray-600 font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.572a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
+                        </svg>
+                        <span>Filter by:</span>
+                    </div>
+                    <div id="filter-buttons" class="flex flex-wrap items-center gap-2">
+                        <button data-filter="All" class="filter-btn px-3 py-1.5 text-sm font-medium rounded-lg">All</button>
+                        <button data-filter="Housing" class="filter-btn px-3 py-1.5 text-sm font-medium rounded-lg">Housing</button>
+                        <button data-filter="Farming" class="filter-btn px-3 py-1.5 text-sm font-medium rounded-lg">Farming</button>
+                        <button data-filter="Healthcare" class="filter-btn px-3 py-1.5 text-sm font-medium rounded-lg">Healthcare</button>
+                    </div>
+                </div>
+
+                <!-- Scheme cards will be dynamically injected here -->
+                <div id="schemes-list" class="mt-6 space-y-6">
+                    <!-- Placeholder content will be replaced by script -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- MOCK DATA ---
+        const mockSchemes = [
+          {
+            id: 1,
+            icon: "home",
+            title: "Pradhan Mantri Awas Yojana",
+            description: "Housing scheme for economically weaker sections and low-income groups to own a home.",
+            eligibility: "Eligible",
+            government: "Central Government",
+            category: "Housing",
+          },
+          {
+            id: 2,
+            icon: "store",
+            title: "PM Kisan Samman Nidhi",
+            description: "Financial assistance scheme for small and marginal farmers providing ₹6000 per year.",
+            eligibility: "May Be Eligible",
+            government: "Central Government",
+            category: "Farming",
+          },
+          {
+            id: 3,
+            icon: "heart",
+            title: "Ayushman Bharat - PMJAY",
+            description: "Health insurance scheme providing coverage up to ₹5 lakh per family per year for secondary and tertiary care hospitalization.",
+            eligibility: "Eligible",
+            government: "Central Government",
+            category: "Healthcare",
+          }
+        ];
+
+        // --- SVG ICONS MAP ---
+        const icons = {
+            home: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg>`,
+            store: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5A2.25 2.25 0 0011.25 11.25H6.75A2.25 2.25 0 004.5 13.5V21M6 10.5h12M6 10.5a2.25 2.25 0 00-2.25 2.25v7.5c0 1.242 1.008 2.25 2.25 2.25h12a2.25 2.25 0 002.25-2.25v-7.5a2.25 2.25 0 00-2.25-2.25H6.75 6 6z" /><path stroke-linecap="round" stroke-linejoin="round" d="M6 10.5V6.75a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6.75v3.75m-12 0h12" /></svg>`,
+            heart: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" /></svg>`
+        };
+
+        let currentFilter = 'All';
+
+        // --- RENDER FUNCTION ---
+        function renderSchemes() {
+            const container = document.getElementById('schemes-list');
+            if (!container) return;
+
+            const filteredSchemes = currentFilter === 'All' 
+                ? mockSchemes 
+                : mockSchemes.filter(scheme => scheme.category === currentFilter);
+
+            let allSchemesHtml = '';
+
+            if(filteredSchemes.length === 0) {
+                allSchemesHtml = `<div class="text-center py-10"><p class="text-gray-500">No schemes found for this category.</p></div>`;
+            } else {
+                filteredSchemes.forEach(scheme => {
+                    let eligibilityClasses;
+                    if (scheme.eligibility === 'Eligible') {
+                        eligibilityClasses = 'bg-green-100 text-green-800';
+                    } else { // May Be Eligible
+                        eligibilityClasses = 'bg-orange-100 text-orange-800';
+                    }
+                    
+                    const iconHtml = icons[scheme.icon] || icons['home'];
+
+                    const schemeCardHtml = `
+                    <div class="w-full bg-white p-6 rounded-2xl border border-gray-200 shadow-sm transition hover:shadow-md hover:border-orange-300">
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-6">
+                            <div class="flex-shrink-0 bg-blue-50 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center">
+                                ${iconHtml}
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                    <h3 class="text-xl font-semibold text-gray-800">${scheme.title}</h3>
+                                    <span class="px-3 py-1 text-sm font-medium rounded-full mt-2 md:mt-0 ${eligibilityClasses}">
+                                        ${scheme.eligibility}
+                                    </span>
+                                </div>
+                                <p class="mt-2 text-gray-600">${scheme.description}</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mt-6 pl-0 sm:pl-22">
+                            <div class="flex items-center gap-2 bg-gray-100 px-3 py-1.5 rounded-full text-sm text-gray-700">
+                                <span>${scheme.government}</span>
+                            </div>
+                            <div class="flex items-center gap-3 mt-4 md:mt-0 w-full md:w-auto">
+                                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 w-1/3 md:w-auto">Summary</button>
+                                <button class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 w-1/3 md:w-auto">Learn More</button>
+                                <button class="px-4 py-2 text-sm font-medium text-white bg-blue-700 border border-transparent rounded-lg hover:bg-blue-800 w-1/3 md:w-auto">Apply Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    allSchemesHtml += schemeCardHtml;
+                });
+            }
+
+            container.innerHTML = allSchemesHtml;
+            updateFilterButtons();
+        }
+
+        function updateFilterButtons() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(button => {
+                if (button.dataset.filter === currentFilter) {
+                    button.classList.add('bg-blue-700', 'text-white');
+                    button.classList.remove('text-gray-600', 'bg-white', 'hover:bg-gray-100');
+                } else {
+                    button.classList.add('text-gray-600', 'bg-white', 'hover:bg-gray-100');
+                    button.classList.remove('bg-blue-700', 'text-white');
+                }
+            });
+        }
+
+
+        // --- INITIALIZE ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderSchemes();
+            const filterButtonsContainer = document.getElementById('filter-buttons');
+            filterButtonsContainer.addEventListener('click', (event) => {
+                if (event.target.classList.contains('filter-btn')) {
+                    currentFilter = event.target.dataset.filter;
+                    renderSchemes();
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+>>>>>>> 2b778d264676be9efd33ce128b3515ec4619fbb1
